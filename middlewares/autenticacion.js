@@ -10,13 +10,13 @@ exports.verificaToken = function(req, res, next) {
     jwt.verify(token, SEED, (err, decoded) => {
 
         if (err) {
-            return response.status(401).json({
+            return res.status(401).json({
                 ok: false,
                 mensaje: 'Token incorrecto',
                 errors: err
             });
         }
-        requ.usuario = decoded.usuario;
+        req.usuario = decoded.usuario;
         next();
     });
 
